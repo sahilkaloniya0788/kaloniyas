@@ -1,0 +1,10 @@
+<testsuites id="" name="" tests="3" failures="0" skipped="0" errors="0" time="9.206072">
+<testsuite name="ui/register/register.spec.ts" timestamp="2023-08-16T17:49:19.204Z" hostname="chrome" tests="3" failures="0" skipped="0" time="5.074" errors="0">
+<testcase name="Verify the working of Register Account functionality register › TC_RF_001 - Verify Registering an Account by providing only the Mandatory fields" classname="ui/register/register.spec.ts" time="2.527">
+</testcase>
+<testcase name="Verify the working of Register Account functionality register › TC_RF_005 -Verify Registering an Account when Yes option is selected for Newsletter field" classname="ui/register/register.spec.ts" time="1.779">
+</testcase>
+<testcase name="Verify the working of Register Account functionality register › TC_RF_003 - Verify proper notification messages are displayed for the mandatory fields, when you dont provide any fields in the Register Account page and submit" classname="ui/register/register.spec.ts" time="0.768">
+</testcase>
+</testsuite>
+</testsuites>

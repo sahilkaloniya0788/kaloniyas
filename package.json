@@ -1,13 +1,19 @@
 {
-  "name": "aethereus_playwright",
+  "name": "tutorialsninja",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "uitest": "plsywright test --grep UItest",
+    "apitest": "plsywright test --grep APItest",
+    "recordtest": "npx playwright codegen https://tutorialsninja.com/demo/"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.37.1"
+    "@playwright/test": "^1.37.0",
+    "dotenv": "^16.0.3",
+    "moment": "2.29.4"
   }
 }
