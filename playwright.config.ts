@@ -24,7 +24,8 @@ export default defineConfig({
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ["line"], ["allure-playwright"],
-    ['html', { open: 'never', outputFolder: 'test-reports' }], ['list'], ['junit', { outputFile: 'test-report/junit.xml' }]],
+   /* ['html', { open: 'never', outputFolder: 'test-reports' }], ['list'], ['junit', { outputFile: 'test-report/junit.xml' }] */
+  ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     headless: false, channel: 'chrome', defaultBrowserType: 'chromium', actionTimeout: 0,
