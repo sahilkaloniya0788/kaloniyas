@@ -22,7 +22,9 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
-  reporter: [['html', { open: 'never', outputFolder: 'test-reports' }], ['list'], ['junit', { outputFile: 'test-report/junit.xml' }]],
+  reporter: [
+    ["line"], ["allure-playwright"],
+    ['html', { open: 'never', outputFolder: 'test-reports' }], ['list'], ['junit', { outputFile: 'test-report/junit.xml' }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     headless: false, channel: 'chrome', defaultBrowserType: 'chromium', actionTimeout: 0,
