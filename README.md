@@ -86,3 +86,11 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
+
+
+
+Playwright update can be made by running:
+
+npm i @playwright/test
+# or 
+npm install -D @playwright/test@latest
