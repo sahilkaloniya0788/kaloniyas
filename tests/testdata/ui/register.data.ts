@@ -5,7 +5,9 @@ export const registerPage = [{
     email : 'mj',
     telephone : '9874563210',
     password : '12345',
-    confirmPassword : '12345'
+    confirmPassword: '12345',
+    male: "Male",
+    female : "Female"
 
 
 

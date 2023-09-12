@@ -86,13 +86,3 @@ export default defineConfig({
   //   reuseExistingServer: !process.env.CI,
   // },
 });
-
-
-/*
-Allure Report
-Cammand - "allure generate allure-results -o allure-report --clean"
-Cammand - "allure open allure-report"
-*/
-
-
-test ankit

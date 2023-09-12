@@ -44,6 +44,3 @@ account.forEach(data => {
         });
     });
 });
-
-
-
