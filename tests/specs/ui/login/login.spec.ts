@@ -16,8 +16,7 @@ test.beforeAll(async ({ browser }) => {
     commonPage = new CommonPage(page);
     await page.goto('/demo');
     await commonPage.pageLoadCheck();
-    await commonPage.clickOnMyAccount();
-    await commonPage.clickOnLoginButton();
+    await commonPage.selectMyAccountOptions('Login');
 
 
     //await loginPage.login(process.env.user == undefined ? "":process.env.user, process.env.uiPassword == undefined ? "" : process.env.uiPassword);

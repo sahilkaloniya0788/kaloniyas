@@ -7,7 +7,8 @@ export const registerPage = [{
     password : '12345',
     confirmPassword: '12345',
     male: "Male",
-    female : "Female"
+    female: "Female",
+    registerButton: "Register"
 
 
 
