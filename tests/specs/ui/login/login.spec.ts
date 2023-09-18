@@ -49,6 +49,42 @@ account.forEach(data => {
             await loginPage.inputLoginPassword('');
             await loginPage.clickOnLoginButton();
         });
-        
+        test('TC_LF_006 >>Verify Forgotten Password link is available in the Login page and is working', async () => {
+            await loginPage.clickOnForgottenPassword();
+        });
+        test('TC_LF_008 >>Verify E-Mail Address and Password text fields in the Login page have the place holder text ', async () => {
+            await loginPage.verifyPlaceholder();
+        });
+        test('TC_LF_013 >>Verify the text into the Password field is toggled to hide its visibility', async () => {
+            await loginPage.verifyPasswordHideVisibility();
+        });
+        test('TC_LF_014 >>Verify the copying of the text entered into the Password field', async () => {
+            await loginPage.verifyCanCopyPassword();
+        });
+        test('TC_LF_015 >>Verify the Password is not visible in the Page Source', async () => {
+            await loginPage.verifyPasswordVisibilityInPageSource();
+        });
+        test('TC_LF_023 >> Verify the Login page functionality in all the supported environments', async () => {
+            await loginPage.inputLoginUsername(process.env.user == undefined ? "" : process.env.user);
+            await loginPage.inputLoginPassword(process.env.uipassword == undefined ? "" : process.env.uipassword);
+            await loginPage.clickOnLoginButton();
+        });
+        test('TC_LF_009 >>Verify Logging into the Application and browsing back using Browser back button', async () => {
+           // await loginPage.verifyBackButtonAndUserLogin();
+           await loginPage.inputLoginUsername(process.env.user == undefined ? "" : process.env.user);
+           await loginPage.inputLoginPassword(process.env.uipassword == undefined ? "" : process.env.uipassword);
+           await loginPage.clickOnLoginButton();
+           await loginPage.page.goBack();
+           await loginPage.logout.waitFor({state:'visible'});  //if its not visible page not refreshed
+        });
+        // test('TC_LF_010 >>Verify Loggingout from the Application and browsing back using Browser back button', async () => {
+        //     // await loginPage.verifyBackButtonAndUserLogin();
+        //     await loginPage.inputLoginUsername(process.env.user == undefined ? "" : process.env.user);
+        //     await loginPage.inputLoginPassword(process.env.uipassword == undefined ? "" : process.env.uipassword);
+        //     await loginPage.clickOnLoginButton();
+        //     await loginPage.logout.waitFor({state:'visible'});
+        //     await loginPage.page.goBack();
+
+        //  });
     });    
 });
