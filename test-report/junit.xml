@@ -1,0 +1,6 @@
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="3.9819340000000003">
+<testsuite name="ui\register\register.spec.ts" timestamp="2023-09-13T07:03:37.610Z" hostname="chrome" tests="1" failures="0" skipped="0" time="0.353" errors="0">
+<testcase name="Automate the login functionality › TC_LF_001 &gt;&gt; Verify logging into the Application using valid credentials" classname="ui\register\register.spec.ts" time="0.353">
+</testcase>
+</testsuite>
+</testsuites>

@@ -13,6 +13,15 @@ export class CommonPage{
         
     }
 
+    async selectMyAccountOptions(optionText: string) {
+        await this.myAccount.waitFor({ state: 'visible' });
+        await this.myAccount.click();
+        const optionTextValue = this.page.locator(`//ul[contains(@class,'dropdown-menu')]//li//a[contains(text(),'${optionText}')]`);
+        optionTextValue.waitFor({ state: 'visible' })
+        optionTextValue.click()
+    }
+    
+
     async clickOnMyAccount() {
         await this.myAccount.waitFor({ state: 'visible' });
         await this.myAccount.click();
