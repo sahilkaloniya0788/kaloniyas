@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "uitest": "plsywright test --grep UItest",
-    "apitest": "plsywright test --grep APItest",
+    "uitest": "npx playwright test --grep ui",
+    "apitest": "npx playwright test --grep api",
     "recordtest": "npx playwright codegen https://tutorialsninja.com/demo/"
   },
   "keywords": [],
@@ -13,10 +13,11 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.37.1",
-    "dotenv": "^16.3.1",
+    "allure-playwright": "^2.5.0",
+    "dotenv": "^16.0.3",
     "moment": "2.29.4"
   },
   "dependencies": {
-    "playwright": "^1.37.1"
+    "playwright": "^1.38.0"
   }
 }

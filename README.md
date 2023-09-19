@@ -88,9 +88,11 @@ export default defineConfig({
 });
 
 
+/*
+Allure Report
+Cammand - "allure generate allure-results -o allure-report --clean"
+Cammand - "allure open allure-report"
+*/
 
-Playwright update can be made by running:
 
-npm i @playwright/test
-# or 
-npm install -D @playwright/test@latest
+test ankit

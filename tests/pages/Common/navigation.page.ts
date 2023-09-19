@@ -1,4 +1,4 @@
-import { Helper } from "../utility/helper";
+import { Helper } from '../../utility/helper';
 import { Page, Locator } from "@playwright/test";
 
 export class Navigation {
@@ -29,16 +29,7 @@ export class Navigation {
         this.loginButton = page.getByRole('link', { name: 'Login' });
         this.logout = this.page.locator('#top-links').getByRole('link', { name: 'Logout' });
     }
-    async gotoRegisterPage(){
-        await this.myAccount.waitFor({ state: "visible" });
-        await this.myAccount.click();   
-        await this.registerButton.click(); 
-    }
-    async gotoLoginPage(){
-        await this.myAccount.waitFor({ state: "visible" });
-        await this.myAccount.click();   
-        await this.loginButton.click(); 
-    }
+    
     async closeAllTabs() {
         const closedTabsRegex = new RegExp('[0-9] tab[a-z] + closed');
         try {
@@ -58,7 +49,7 @@ export class Navigation {
         await this.myAccount.click();
         await this.logout.click();
         await this.page.getByRole('link', { name: 'Continue' }).click();
-        // await this.page.close();
+        await this.page.close();
     }
     async selectievigationMenuOption(optionName: string) {
         await this.navigationMenu.click();

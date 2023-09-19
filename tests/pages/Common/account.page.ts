@@ -1,5 +1,5 @@
 import { Page, Locator } from "@playwright/test";
-import { Helper } from "../utility/helper";
+import { Helper } from "../../utility/helper";
 
 export class AccountPage {
     readonly page: Page;

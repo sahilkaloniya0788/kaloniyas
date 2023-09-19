@@ -1,38 +1,76 @@
-import { test, Page, APIRequestContext } from "@playwright/test";
-import { RegisterPage } from "../../../pages/register/register.page";
-import { registerPage } from "../../../testdata/ui/register.data";
-import { LoginPage } from "../../../pages/login/login.page";
-import { CommonPage } from "../../../pages/common.page.ts/common.page";
+import { test, APIRequestContext, Page } from '@playwright/test'
+import { Helper } from '../../../utility/helper'
+import { registerData } from '../../../testdata/ui/register.data'
+import { Navigation } from '../../../pages/common/navigation.page'
+import { RegisterPage } from '../../../pages/register/resgister.page'
+import { CommonPage } from '../../../pages/common/common.page'
 
-let page: Page;
-let register: RegisterPage;
-let request: APIRequestContext;
-let loginPage: LoginPage;
-let commonPage: CommonPage;
-// let navigation: Navigation;
-
+let request: APIRequestContext
+let page: Page
+let register: RegisterPage
+let commonPage: CommonPage
+let navigation: Navigation
 
 test.beforeAll(async ({ browser }) => {
-    page = await browser.newPage();
-    request = (await browser.newContext()).request;
-    loginPage = new LoginPage(page);
-    commonPage = new CommonPage(page);
-    await page.goto('/demo');
-    await commonPage.pageLoadCheck();
-    await commonPage.selectMyAccountOptions('Register');
+    page = await browser.newPage()
+    request = (await browser.newContext()).request
+    commonPage = new CommonPage(page)
+    register = new RegisterPage(page)
+    navigation = new Navigation(page)
+    await page.goto('/demo')
+    await commonPage.pageLoadCheck()
+    await commonPage.clickOnMyAccount()
+    await commonPage.selectAccountOption('Register')
     
+    
+})
+registerData.forEach(data => {
+    test.describe.parallel(`Verify the working of Register Account functionality ${data.tc}`, async () => {
+        test('TC_RF_001 - Verify Registering an Account by providing only the Mandatory fields', async () => {
+            await commonPage.selectAccountOption('Register')
+            await register.inputFirstName(data.firstName + Helper.uniqueNumbers())
+            await register.inputiLastName(data.lastName + Helper.uniqueNumbers())
+            await register.inputEmail(data.email + Helper.uniqueNumbers() + '@gmail.com')
+            await register.inputTelephone(data.telephone)
+            await register.inputPassword(data.password)
+            await register.inputConfirmPassword(data.confirmPassword)
+            await register.selectYesCheckbox()
+            await register.selectPrivacyPolicy()
+            await register.clickOnContinueBtn()
+            await register.clickOnContinueBtnAfterSuccess()
+            await navigation.Logout()
+        })
+        test('TC_RF_005 -Verify Registering an Account when Yes option is selected for Newsletter field', async () => {
+            await register.inputFirstName(data.firstName + Helper.uniqueNumbers())
+            await register.inputiLastName(data.lastName + Helper.uniqueNumbers())
+            await register.inputEmail(data.email + Helper.uniqueNumbers() + 'mj@gmail.com')
+            await register.inputTelephone(data.telephone)
+            await register.inputPassword(data.password)
+            await register.inputConfirmPassword(data.confirmPassword)
+            await register.selectYesCheckbox()
+            await register.selectPrivacyPolicy()
+            await register.clickOnContinueBtn()
+            await register.clickOnContinueBtnAfterSuccess()
+            await register.clickOnSubscribeUnsubscribeToNewsLetterLink()
+            await register.verifyNewsLetterSubscribeCheckedOrNot('Yes')
+            await navigation.Logout()
 
+        })
 
-    //await loginPage.login(process.env.user == undefined ? "":process.env.user, process.env.uiPassword == undefined ? "" : process.env.uiPassword);
-});
-
-registerPage.forEach(data => {
-    test.describe.serial('Automate the login functionality', () => {
-        test('TC_LF_001 >> Verify logging into the Application using valid credentials', async () => {
-            
-            
-            
-        });
-
+        test('TC_RF_003 - Verify proper notification messages are displayed for the mandatory fields, when you dont provide any fields in the Register Account page and submit', async () => {
+            await register.inputPassword(data.password)
+            await register.inputConfirmPassword(Helper.uniqueNumbers())
+            await register.clickOnContinueBtn()
+            await register.verifyFirstNameErrorMsg()
+            await register.verifyLastNameErrorMsg()
+            await register.verifyEmailErrorMsg()
+            await register.verifyTelephoneErrorMsg()
+            await register.verifyPrivacyPolicyErrorMsg()
+            await register.verifyConfirmPasswordErrorMsg()
+        })
+        
+        test.afterAll(async () => {
+            await page.close()
+        })
     })
 })
