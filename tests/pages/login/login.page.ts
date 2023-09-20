@@ -34,18 +34,18 @@ export class LoginPage {
         await this.myAccountBtn.waitFor({ state: "visible" , timeout : 2000})
         await this.myAccountBtn.click()
         await this.page.locator(`//ul[contains(@class,'dropdown-menu')]//li//a[contains(text(),'Login')]`).click()
-        await this.inputiLoginUsername(process.env.user == undefined ? "":process.env.user);
-        await this.inputiLoginPassword(process.env.uiPassword == undefined ? "" : process.env.uiPassword);
+        await this.inputLoginUsername(process.env.user == undefined ? "":process.env.user);
+        await this.inputLoginPassword(process.env.uiPassword == undefined ? "" : process.env.uiPassword);
         await this.clickOnLoginBtn();
         await this.validateUserLoginSuccessfully();
     }
     
-    async inputiLoginUsername(username: string) {
+    async inputLoginUsername(username: string) {
         await this.emailfield.waitFor({ state: "visible" });
         await this.emailfield.clear();
         await this.emailfield.fill(username);
     }
-    async inputiLoginPassword(password: string) {
+    async inputLoginPassword(password: string) {
         await this.passwordfield.waitFor({ state: "visible" });
         await this.passwordfield.clear();
         await this.passwordfield.fill(password);
@@ -88,5 +88,6 @@ export class LoginPage {
             console.log("Placeholder is not expected")
         }
     }
+    
    
 }

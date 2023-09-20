@@ -22,32 +22,32 @@ test.beforeAll(async ({ browser }) => {
 loginData.forEach(data => {
     test.describe.parallel(`Verify the working of Register Account functionality`, async () => {
         test('TC_LF_001 >> Verify logging into the Application using valid credentials', async () => {
-            await loginPage.inputiLoginUsername(process.env.user == undefined ? "":process.env.user)
-            await loginPage.inputiLoginPassword(process.env.uiPassword == undefined ? "" : process.env.uiPassword)
+            await loginPage.inputLoginUsername(process.env.user == undefined ? "":process.env.user)
+            await loginPage.inputLoginPassword(process.env.uiPassword == undefined ? "" : process.env.uiPassword)
             await loginPage.clickOnLoginBtn()
             await loginPage.validateUserLoginSuccessfully()
         });
         test('TC_LF_002 >> Verify logging into the Application using invalid credentials', async () => {
-            await loginPage.inputiLoginUsername(Helper.uniqueNumbers())
-            await loginPage.inputiLoginPassword(Helper.uniqueNumbers())
+            await loginPage.inputLoginUsername(Helper.uniqueNumbers())
+            await loginPage.inputLoginPassword(Helper.uniqueNumbers())
             await loginPage.clickOnLoginBtn()
             await loginPage.verifyLoginWarningMsgIsVisible()
         })
         test('TC_LF_003 >> Verify logging into the Application using invalid email address and valid Password', async () => {
-            await loginPage.inputiLoginUsername(Helper.uniqueNumbers())
-            await loginPage.inputiLoginPassword(process.env.uiPassword == undefined ? "" : process.env.uiPassword)
+            await loginPage.inputLoginUsername(Helper.uniqueNumbers())
+            await loginPage.inputLoginPassword(process.env.uiPassword == undefined ? "" : process.env.uiPassword)
             await loginPage.clickOnLoginBtn()
             await loginPage.verifyLoginWarningMsgIsVisible()
         })
         test('TC_LF_004 >> Verify logging into the Application using valid email address and invalid Password', async () => {
-            await loginPage.inputiLoginUsername(process.env.user == undefined ? "":process.env.user)
-            await loginPage.inputiLoginPassword(Helper.uniqueNumbers())
+            await loginPage.inputLoginUsername(process.env.user == undefined ? "":process.env.user)
+            await loginPage.inputLoginPassword(Helper.uniqueNumbers())
             await loginPage.clickOnLoginBtn()
             await loginPage.verifyLoginWarningMsgIsVisible()
         })
         test('TC_LF_005 >> Verify logging into the Application without providing any credentials', async () => {
-            await loginPage.inputiLoginUsername('')
-            await loginPage.inputiLoginPassword('')
+            await loginPage.inputLoginUsername('')
+            await loginPage.inputLoginPassword('')
             await loginPage.clickOnLoginBtn()
             await loginPage.verifyLoginWarningMsgIsVisible()
         })
@@ -62,6 +62,7 @@ loginData.forEach(data => {
         test('TC_LF_008 >> Verify E-Mail Address and Password text fields in the Login page have the place holder text ', async () => {
             await loginPage.ValidateEmailPlaceholderText(data.emailPlaceholder)
         })
+        
         
     })
     test.afterAll(async () => {
