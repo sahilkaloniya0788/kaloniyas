@@ -22,7 +22,7 @@ test.beforeAll(async ({ browser }) => {
     
 });
 searchData.forEach(data => {
-    test.describe.serial('Automate the search functionality', () => {
+    test.describe.parallel('Automate the search functionality', () => {
         test('TC_SF_001 >> Verify searching with an existing Product Name', async () => {
             await searchPage.inputSearchProduct(data.productName);
             await searchPage.clickOnSearchButton();
