@@ -12,7 +12,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.37.1",
+    "@playwright/test": "^1.38.0",
+    "@types/node": "^20.6.3",
     "allure-playwright": "^2.5.0",
     "dotenv": "^16.0.3",
     "moment": "2.29.4"
