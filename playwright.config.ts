@@ -49,14 +49,14 @@ export default defineConfig({
         viewport: { width: 1920, height: 1080 },
       },
     
-
+    }
       // {
       //   name: 'firefox',
       //   use: { ...devices['Desktop Firefox'] },
       // },
 
       // {
-      //   name: 'webkit',
+      //   name:'webkit',
       //   use: { ...devices['Desktop Safari'] },
       // },
 
@@ -79,7 +79,8 @@ export default defineConfig({
       //   name: 'Google Chrome',
       //   use: { ..devices['Desktop Chrome'], channel: 'chrome' },
       // },
-    }]
+    //}
+  ]
 });
 
 /* Run your local dev server before starting the tests */
