@@ -102,9 +102,9 @@ export class ForgotPage {
       await this.forgotpassword.waitFor({ state: 'visible' });
       await this.forgotpassword.click();
       await this.breadcrumbHome.waitFor({state : 'visible'});
-      await this.breadcrumbHome.click({force:true});
-      await this.breadcrumbHomeFeatured.waitFor({state:'visible'});
-      await this.page.goBack();
+      // await this.breadcrumbHome.click({force:true});
+      // await this.breadcrumbHomeFeatured.waitFor({state:'visible'});
+      // await this.page.goBack();
       await this.breadcrumbAccount.waitFor({state : 'visible'});
       await this.breadcrumbAccount.click();
       await this.passwordField.waitFor({ state: 'visible' });
