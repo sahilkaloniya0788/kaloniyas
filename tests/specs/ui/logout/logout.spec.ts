@@ -28,6 +28,11 @@ logoutData.forEach(data => {
         test('TC_LG_001 >> Verify Logging out by selecting Logout option from My Account dropmenu', async () => {
             await logoutPage.userLogout()
             await logoutPage.validateUserLogOut()
+            
+            await page.setViewportSize({
+                width: 940,
+                height: 1180,
+            });
         })
         test.afterAll(async () => {
             await page.close()
