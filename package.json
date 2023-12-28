@@ -12,23 +12,14 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-<<<<<<< HEAD
     "@playwright/test": "^1.37.1",
     "@types/js-yaml": "^4.0.9",
-=======
-    "@playwright/test": "^1.40.1",
-    "@types/node": "^20.6.3",
->>>>>>> 782f9c745a4081640c66da3ee6760c18de0f9d67
     "allure-playwright": "^2.5.0",
     "dotenv": "^16.0.3",
     "moment": "2.29.4"
   },
   "dependencies": {
-<<<<<<< HEAD
     "js-yaml": "^4.1.0",
     "playwright": "^1.38.0"
-=======
-    "playwright": "^1.40.1"
->>>>>>> 782f9c745a4081640c66da3ee6760c18de0f9d67
   }
 }

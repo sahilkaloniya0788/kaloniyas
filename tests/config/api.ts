@@ -12,3 +12,4 @@ export const url = {
     passcode: 'https://mailinator.com/api/v2/authenticators/salesforce?token=',
     contact: 'https://aethereusconsultingpvtltd4--univqa1.sandbox.my.salesforce.com/services/apexrest/lumen/api/Learner/'
 };
+
