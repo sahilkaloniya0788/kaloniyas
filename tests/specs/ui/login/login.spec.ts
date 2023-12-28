@@ -1,11 +1,11 @@
-import { test,  APIRequestContext, Page } from '@playwright/test'
+import { test, APIRequestContext, Page } from '@playwright/test'
 import { LoginPage } from '../../../pages/login/login.page'
 import { Helper } from '../../../utility/helper'
 import { CommonPage } from '../../../pages/common/common.page'
 import { loginData } from '../../../testdata/ui/login.data'
 
 let request: APIRequestContext
-let page : Page
+let page: Page
 let loginPage: LoginPage
 let commonPage: CommonPage
 
@@ -20,9 +20,15 @@ test.beforeAll(async ({ browser }) => {
     await commonPage.selectAccountOption('Login')
 })
 loginData.forEach(data => {
-    test.describe.parallel(`Verify the working of Register Account functionality`, async () => {
+    test.describe.serial(`Verify the working of Register Account functionality`, async () => {
+        When('Test', async function () {
+            await loginPage.inputLoginUsername(process.env.user == undefined ? "" : process.env.user)
+            await loginPage.inputLoginPassword(process.env.uiPassword == undefined ? "" : process.env.uiPassword)
+            await loginPage.clickOnLoginBtn()
+            await loginPage.validateUserLoginSuccessfully()
+        })
         test('TC_LF_001 >> Verify logging into the Application using valid credentials', async () => {
-            await loginPage.inputLoginUsername(process.env.user == undefined ? "":process.env.user)
+            await loginPage.inputLoginUsername(process.env.user == undefined ? "" : process.env.user)
             await loginPage.inputLoginPassword(process.env.uiPassword == undefined ? "" : process.env.uiPassword)
             await loginPage.clickOnLoginBtn()
             await loginPage.validateUserLoginSuccessfully()
@@ -40,7 +46,7 @@ loginData.forEach(data => {
             await loginPage.verifyLoginWarningMsgIsVisible()
         })
         test('TC_LF_004 >> Verify logging into the Application using valid email address and invalid Password', async () => {
-            await loginPage.inputLoginUsername(process.env.user == undefined ? "":process.env.user)
+            await loginPage.inputLoginUsername(process.env.user == undefined ? "" : process.env.user)
             await loginPage.inputLoginPassword(Helper.uniqueNumbers())
             await loginPage.clickOnLoginBtn()
             await loginPage.verifyLoginWarningMsgIsVisible()
@@ -62,10 +68,14 @@ loginData.forEach(data => {
         test('TC_LF_008 >> Verify E-Mail Address and Password text fields in the Login page have the place holder text ', async () => {
             await loginPage.ValidateEmailPlaceholderText(data.emailPlaceholder)
         })
-        
-        
+
+
     })
     test.afterAll(async () => {
         await page.close()
     })
 })
+function When(arg0: string, arg1: () => Promise<void>) {
+    throw new Error('Function not implemented.')
+}
+

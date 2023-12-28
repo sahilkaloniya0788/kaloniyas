@@ -1,22 +1,6 @@
-<<<<<<< HEAD
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="3.9819340000000003">
-<testsuite name="ui\register\register.spec.ts" timestamp="2023-09-13T07:03:37.610Z" hostname="chrome" tests="1" failures="0" skipped="0" time="0.353" errors="0">
-<testcase name="Automate the login functionality › TC_LF_001 &gt;&gt; Verify logging into the Application using valid credentials" classname="ui\register\register.spec.ts" time="0.353">
-=======
-<testsuites id="" name="" tests="1" failures="1" skipped="0" errors="0" time="1.144312">
-<testsuite name="ui\login\login.spec.ts" timestamp="2023-09-14T06:03:41.641Z" hostname="chrome" tests="1" failures="1" skipped="0" time="0.011" errors="0">
-<testcase name="Automate the login functionality › TC_LF_002 &gt;&gt; Verify logging into the Application using invalid credentials (i.e. Invalid email address and Invalid Password)" classname="ui\login\login.spec.ts" time="0.011">
-<failure message="login.spec.ts:32:13 TC_LF_002 &gt;&gt; Verify logging into the Application using invalid credentials (i.e. Invalid email address and Invalid Password)" type="FAILURE">
-<![CDATA[  [chrome] › ui\login\login.spec.ts:32:13 › Automate the login functionality › TC_LF_002 >> Verify logging into the Application using invalid credentials (i.e. Invalid email address and Invalid Password) 
-
-    Error: browserType.launch: Chromium distribution 'chrome' is not found at C:\Users\91743\AppData\Local\Google\Chrome\Application\chrome.exe
-    Run "npx playwright install chrome"
-
-
-
-]]>
-</failure>
->>>>>>> a845210943e128a6548c76ff60298db796d2d57b
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="7.663066999999999">
+<testsuite name="ui\logout\logout.spec.ts" timestamp="2023-12-06T13:13:59.270Z" hostname="chrome" tests="1" failures="0" skipped="0" time="1.08" errors="0">
+<testcase name="Verify the working of Register Account functionality › TC_LG_001 &gt;&gt; Verify Logging out by selecting Logout option from My Account dropmenu" classname="ui\logout\logout.spec.ts" time="1.08">
 </testcase>
 </testsuite>
 </testsuites>
