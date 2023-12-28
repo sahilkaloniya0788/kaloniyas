@@ -13,11 +13,13 @@
   "license": "ISC",
   "devDependencies": {
     "@playwright/test": "^1.37.1",
+    "@types/js-yaml": "^4.0.9",
     "allure-playwright": "^2.5.0",
     "dotenv": "^16.0.3",
     "moment": "2.29.4"
   },
   "dependencies": {
+    "js-yaml": "^4.1.0",
     "playwright": "^1.38.0"
   }
 }

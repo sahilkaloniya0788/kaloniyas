@@ -1,4 +1,4 @@
 export interface AccountResponse{
-    PersonContactId: any;
+    PersonContactId: 65875;
     
 }

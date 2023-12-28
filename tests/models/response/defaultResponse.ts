@@ -1,4 +1,5 @@
-export interface defaultResponse{
+export interface defaultResponse {
     id: any;
-    
+
+
 }

@@ -1,4 +1,5 @@
 export interface QueryResponse {
+    id: any
     totalSize: number
     done : boolean
     records : Record[]

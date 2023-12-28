@@ -1,6 +1,6 @@
 import { Page, Locator } from "@playwright/test";
-import { registerData } from "../../testdata/ui/register.data";
-import { Helper } from "../../utility/helper";
+import { registerData } from "../../../testdata/ui/register.data";
+import { Helper } from "../../../utility/helper";
 type registerData = typeof registerData[0];
 
 export class RegisterPage {
