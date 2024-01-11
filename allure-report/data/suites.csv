@@ -1,5 +1,0 @@
-"Status","Start Time","Stop Time","Duration in ms","Parent Suite","Suite","Sub Suite","Test Class","Test Method","Name","Description"
-"broken","Mon Aug 21 22:39:16 PDT 2023","Mon Aug 21 22:39:47 PDT 2023","30280","chrome","","Verify the working of Register Account functionality register","","","TC_RF_003 - Verify proper notification messages are displayed for the mandatory fields, when you dont provide any fields in the Register Account page and submit",""
-"passed","Mon Aug 21 22:39:07 PDT 2023","Mon Aug 21 22:39:14 PDT 2023","6882","chrome","","Verify the working of Register Account functionality register","","","TC_RF_001 - Verify Registering an Account by providing only the Mandatory fields",""
-"passed","Mon Aug 21 22:39:14 PDT 2023","Mon Aug 21 22:39:16 PDT 2023","2128","chrome","","Verify the working of Register Account functionality register","","","TC_RF_005 -Verify Registering an Account when Yes option is selected for Newsletter field",""
-"passed","Mon Aug 21 22:37:57 PDT 2023","Mon Aug 21 22:38:11 PDT 2023","13442","chrome","","TestData Create Registration Case","","","I create a account",""
