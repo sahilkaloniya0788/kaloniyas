@@ -135,4 +135,6 @@ export class RegisterPage {
         await this.page.getByText(chekedValue, { exact: true }).waitFor({state: 'visible'});
         await this.page.getByText(chekedValue,{ exact: true }).isChecked();
     }
+
+    
 }

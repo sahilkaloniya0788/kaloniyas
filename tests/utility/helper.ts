@@ -1,6 +1,6 @@
-import { expect } from "@playwright/test";
+import { Page, expect } from "@playwright/test";
 import moment from "moment"
-
+let page: Page
 export class Helper {
     static async delay(ms: number) {
         return new Promise((resolve) => setTimeout(resolve, ms));
@@ -40,4 +40,39 @@ export class Helper {
         }
     }
 
+    static convertToStarPattern(inputString: string): string {
+        return '*'.repeat(inputString.length);
+    }
+
+
+    static async retry<T>(
+        action: () => Promise<T>,
+        maxAttempts: number = 5,
+        delayBetweenAttempts: number = 2000
+    ): Promise<T> {
+        let attempts = 0;
+
+        while (attempts < maxAttempts) {
+            try {
+                const result = await action();
+                return result; // Return the result if the action is successful
+            } catch (error) {
+                console.error(`Attempt ${attempts + 1} failed with error: ${error.message}`);
+
+                attempts++;
+
+                if (attempts < maxAttempts) {
+                    console.log(`Retrying in ${delayBetweenAttempts / 1000} seconds...`);
+                    await new Promise(resolve => setTimeout(resolve, delayBetweenAttempts));
+                }
+            }
+        }
+
+        // If all attempts fail, throw the last encountered error
+        throw new Error(`All ${maxAttempts} attempts failed.`);
+    }
+
+
 }
+
+

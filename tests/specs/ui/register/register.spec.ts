@@ -1,22 +1,19 @@
 import { test, APIRequestContext, Page } from '@playwright/test'
 import { Helper } from '../../../utility/helper'
 import { registerData } from '../../../testdata/ui/register.data'
-import { Navigation } from '../../../pages/common/navigation.page'
-import { RegisterPage } from '../../../pages/register/resgister.page'
-import { CommonPage } from '../../../pages/common/common.page'
+import { RegisterPage } from '../../../pages/ui/register/resgister.page'
+import { CommonPage } from '../../../pages/ui/Common/common.page'
 
 let request: APIRequestContext
 let page: Page
 let register: RegisterPage
 let commonPage: CommonPage
-let navigation: Navigation
 
 test.beforeAll(async ({ browser }) => {
     page = await browser.newPage()
     request = (await browser.newContext()).request
     commonPage = new CommonPage(page)
     register = new RegisterPage(page)
-    navigation = new Navigation(page)
     await page.goto('/demo')
     await commonPage.pageLoadCheck()
     await commonPage.clickOnMyAccount()

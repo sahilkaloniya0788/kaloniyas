@@ -11,7 +11,7 @@ require('dotenv').config({ path: 'secrets.env' });
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './tests/specs',
+  testDir: './tests/specs/ui',
   timeout: 30 * 1000,
   expect: {
     timeout: 30000
@@ -23,7 +23,7 @@ export default defineConfig({
   /* Retry on CI only */
   retries: process.env.CI ? 0 : 0,
   /* Opt out of parallel tests on CI. */
-  workers: process.env.CI ? 2 : 2,
+  workers: process.env.CI ? 20 : 20,
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [['html', { open: 'never', outputFolder: 'test-reports' }], ['list'], ['junit', { outputFile: 'test-report/junit.xml' }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
@@ -33,7 +33,7 @@ export default defineConfig({
     defaultBrowserType: 'chromium',
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://tutorialsninja.com',
+    baseURL: 'https://tutorialsninja.com/demo/index.php?route=common/home',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',

@@ -1,8 +1,9 @@
 import { test, APIRequestContext, Page } from '@playwright/test'
-import { LoginPage } from '../../../pages/login/login.page'
 import { Helper } from '../../../utility/helper'
-import { CommonPage } from '../../../pages/common/common.page'
 import { loginData } from '../../../testdata/ui/login.data'
+import { LoginPage } from '../../../pages/ui/login/login.page'
+import { CommonPage } from '../../../pages/ui/Common/common.page'
+import { log } from 'console'
 
 let request: APIRequestContext
 let page: Page
@@ -20,13 +21,7 @@ test.beforeAll(async ({ browser }) => {
     await commonPage.selectAccountOption('Login')
 })
 loginData.forEach(data => {
-    test.describe.serial(`Verify the working of Register Account functionality`, async () => {
-        When('Test', async function () {
-            await loginPage.inputLoginUsername(process.env.user == undefined ? "" : process.env.user)
-            await loginPage.inputLoginPassword(process.env.uiPassword == undefined ? "" : process.env.uiPassword)
-            await loginPage.clickOnLoginBtn()
-            await loginPage.validateUserLoginSuccessfully()
-        })
+    test.describe.parallel(`Verify the working of Register Account functionality`, async () => {
         test('TC_LF_001 >> Verify logging into the Application using valid credentials', async () => {
             await loginPage.inputLoginUsername(process.env.user == undefined ? "" : process.env.user)
             await loginPage.inputLoginPassword(process.env.uiPassword == undefined ? "" : process.env.uiPassword)
@@ -69,13 +64,125 @@ loginData.forEach(data => {
             await loginPage.ValidateEmailPlaceholderText(data.emailPlaceholder)
         })
 
+        test("TC_LF_009 >>> Verify Logging into the Application and browsing back using Browser back button ", async() => {
+            await loginPage.inputLoginUsername(process.env.user == undefined ? "" : process.env.user)
+            await loginPage.inputLoginPassword(process.env.uiPassword == undefined ? "" : process.env.uiPassword)
+            await loginPage.clickOnLoginBtn()
+            await page.goBack()
+            await loginPage.validatingUserIsLoggedout()
+        })
+
+        test("TC_LF_0010 >>> Verify Loggingout from the Application and browsing back using Browser back button", async() => {
+            await loginPage.inputLoginUsername(process.env.user == undefined ? "" : process.env.user)
+            await loginPage.inputLoginPassword(process.env.uiPassword == undefined ? "" : process.env.uiPassword)
+            await loginPage.clickOnLoginBtn()
+            await loginPage.LoggingOut()
+            await page.goBack()
+            await loginPage.validatingUserIsLoggedIn()
+        })
+
+
+        test("TC_LF_0011 >>> Verify logging into the Application using inactive credentials", async() => {
+
+        })
+
+        test("TC_LF_0012 >>> Verify the number of unsucessful login attemps ",async () => {
+            await loginPage.inputLoginUsername(Helper.uniqueNumbers())
+            await loginPage.inputLoginPassword(Helper.uniqueNumbers())
+            await loginPage.clickOnLoginBtn()
+            await loginPage.inputLoginUsername(Helper.uniqueNumbers())
+            await loginPage.inputLoginPassword(Helper.uniqueNumbers())
+            await loginPage.clickOnLoginBtn()
+            await loginPage.inputLoginUsername(Helper.uniqueNumbers())
+            await loginPage.inputLoginPassword(Helper.uniqueNumbers())
+            await loginPage.clickOnLoginBtn()
+            await loginPage.inputLoginUsername(Helper.uniqueNumbers())
+            await loginPage.inputLoginPassword(Helper.uniqueNumbers())
+            await loginPage.clickOnLoginBtn()
+            await loginPage.inputLoginUsername(Helper.uniqueNumbers())
+            await loginPage.inputLoginPassword(Helper.uniqueNumbers())
+            await loginPage.clickOnLoginBtn()
+            await loginPage.verifyingUnsuccessfulLoggingAttemps()
+            
+        })
+
+        test("TC_LF_0013 >>> Verify the text into the Password field is toggled to hide its visibility", async() => {
+            await loginPage.verifyingPasswordIsHidden()
+           
+        })
+
+        test('TC_LF_0014 >>> Verify the copying of the text entered into the Password field', async() => {
+            await loginPage.copyingTheHiddenPassword()
+
+        })
+
+        test('TC_LF_0015 >>> Verify the copying of the text entered into the Password field', async() => {
+            await loginPage.InspectingPassworField()
+        
+        })
+
+        test('TC_LF_0016 >>> Verify Logging into the Application after changing the password', async() => {
+            await loginPage.inputLoginUsername(process.env.user == undefined ? "" : process.env.user)
+            await loginPage.inputLoginPassword(process.env.uiPassword == undefined ? "" : process.env.uiPassword)
+            await loginPage.clickOnLoginBtn()
+            await loginPage.changingNewPassword()
+            await loginPage.LoggingOut()
+            await loginPage.loggingWithNewCredentials()
+            
+        })
+
+        test('TC_LF_0017 >>> Verify Logging into the Application, closing the Browser without loggingout and opening the application in the Browser again',async() => {
+            await loginPage.inputLoginUsername(process.env.user == undefined ? "" : process.env.user)
+            await loginPage.inputLoginPassword(process.env.uiPassword == undefined ? "" : process.env.uiPassword)
+            await loginPage.clickOnLoginBtn() 
+            await page.close();
+            // await commonPage.openingTheBrowserAgain(chromium)
+        })
+
+        test('TC_LF_0019 >>> Verify user is able to navigate to different pages from Login page ', async() => {
+            await loginPage.navigatingDifferentPagesFromLoginPages()
+
+
+        })
+
+        test('TC_LF_0020 >>> Verify the different ways of navigating to the Login page', async() => {
+            await loginPage.navigatingToLoginPageFromDifferentWays()
+        })
+
+        test('TC_LF_0021 >>> Verify the Page Heading and Page URL of Login page', async() => {
+            await loginPage.verifyingPageHeading()
+        })
+
+
+
+
+
+
+
+
+
 
     })
-    test.afterAll(async () => {
+    test.afterAll(async ({ browser }) => {
+        // page = await browser.newPage()
+        // request = (await browser.newContext()).request
         await page.close()
+        // await page.goto('/demp')
     })
 })
 function When(arg0: string, arg1: () => Promise<void>) {
     throw new Error('Function not implemented.')
 }
+
+
+
+
+
+
+
+
+
+
+
+
 

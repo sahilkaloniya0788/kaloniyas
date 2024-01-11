@@ -1,7 +1,11 @@
 import { Page, Locator } from "@playwright/test"
-
+import { APIRequest, Browser } from "playwright"
+let page: Page
+let browser: Browser
+let request: APIRequest
 
 export class CommonPage {
+    
     readonly page: Page
     readonly pageLoadElement: Locator
     readonly myAccountBtn: Locator
@@ -49,5 +53,9 @@ export class CommonPage {
             height: height,
         });
     }
-
+    async openingTheBrowserAgain(browser: { newPage: () => Page | PromiseLike<Page>; newContext: () => any }) {
+        page = await browser.newPage()
+        request = (await browser.newContext()).request
+        await page.goto('/demo')
+    }
 }
