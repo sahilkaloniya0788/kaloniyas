@@ -1,6 +1,6 @@
-<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="5.463004999999999">
-<testsuite name="special_offer\special_offer.spec.ts" timestamp="2024-01-11T07:49:17.745Z" hostname="chrome" tests="1" failures="0" skipped="0" time="0.692" errors="0">
-<testcase name="Automate the &apos;special offer&apos; functionality › TC_SO_001 &gt;&gt;&gt; Verify navigating to &apos;Special Offers&apos; page using &apos;Specials&apos; footer link" classname="special_offer\special_offer.spec.ts" time="0.692">
+<testsuites id="" name="" tests="1" failures="0" skipped="0" errors="0" time="34.591921">
+<testsuite name="SFlogin\SFlogin.spec.ts" timestamp="2024-01-31T07:17:15.710Z" hostname="chrome" tests="1" failures="0" skipped="0" time="28.831" errors="0">
+<testcase name="Automate the salesforce functionality › TC_SF_003 &gt;&gt;&gt; creating a new opportunity in sales app" classname="SFlogin\SFlogin.spec.ts" time="28.831">
 </testcase>
 </testsuite>
 </testsuites>

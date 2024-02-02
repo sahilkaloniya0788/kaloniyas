@@ -33,7 +33,7 @@ export default defineConfig({
     defaultBrowserType: 'chromium',
     actionTimeout: 0,
     /* Base URL to use in actions like `await page.goto('/')`. */
-    baseURL: 'https://tutorialsninja.com/demo/index.php?route=common/home',
+    baseURL: 'https://login.salesforce.com/?locale=in',
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
